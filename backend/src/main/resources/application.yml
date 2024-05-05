@@ -1,0 +1,23 @@
+spring:
+  config:
+    import: "optional:configserver:"
+  application:
+    name: xchange
+
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:xchangedb
+    username: xchange
+    password: password
+
+xchange:
+  integration:
+    lithuaniaBaseUrl: https://www.lb.lt
+    lithuaniaBasePath: /webservices/FxRates/FxRates.asmx
+    connectTimeoutMs: 5000
+    readTimeoutMs: 20000
+    writeTimeoutMs: 20000
+    logLevel: INFO
+
+server:
+  port: 8080

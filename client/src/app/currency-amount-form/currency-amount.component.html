@@ -1,0 +1,7 @@
+<div class="input-amount input-field">
+  <span class="prefix">{{ from_symbol }}</span>
+  <input required lang="en-US" type="number" [(ngModel)]="amount_value"
+         (change)="onAmountChange(amount_value)" (focusout)="onAmountChange(amount_value)"
+         name="amount" #amount_input placeholder="Amount"
+         step="0.01">
+</div>

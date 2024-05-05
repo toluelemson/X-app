@@ -1,0 +1,130 @@
+<!--<div class="container">-->
+<!--  <mat-grid-list cols="12" rowHeight="fit" gutterSize="10px">-->
+<!--    <mat-grid-tile colspan="8" rowspan="1">-->
+<!--      <div class="content">-->
+<!--        <mat-card class="fully-transparent-card">-->
+<!--          <mat-card-content class="currency-display">-->
+<!--            <div class="result-currency">-->
+<!--              <div *ngIf="isResult">-->
+<!--                <currency-result-display-->
+<!--                  [resultFrom]="resultFrom"-->
+<!--                  [resultTo]="resultTo"-->
+<!--                  [resultInfo]="resultInfo">-->
+<!--                </currency-result-display>-->
+<!--              </div>-->
+<!--              <div *ngIf="isDataAvailable">-->
+<!--                <form name="form-exchange" (ngSubmit)="onSubmit()">-->
+
+<!--                  <div class="form-currency" #formExchange (window:resize)="onResize()">-->
+<!--                    <label>Amount</label>-->
+<!--                    <currency-amount-display [from_symbol]="from_symbol"-->
+<!--                                             (changeAmountValue)="changeAmountValue($event)">-->
+<!--                    </currency-amount-display>-->
+
+<!--                    <label>From</label>-->
+<!--                    <app-currency-selector #from [selectorId]="'from'"-->
+<!--                                           [changeCurrency]="selectFrom"></app-currency-selector>-->
+
+<!--                    <label>To</label>-->
+<!--                    <app-currency-selector #to [selectorId]="'to'"-->
+<!--                                           [changeCurrency]="selectTo"></app-currency-selector>-->
+<!--                  </div>-->
+
+<!--                  <div class="button-container">-->
+<!--                    <button class="switch-btn" type="button" (click)="switchCurrencies()">-->
+<!--                      <i class="switch-btn bi bi-arrow-left-right "></i>-->
+<!--                    </button>-->
+<!--                    <button class="switch-btn" type="submit">-->
+<!--                      <i class="switch-btn bi bi-arrow-right "></i>-->
+<!--                    </button>-->
+<!--                  </div>-->
+
+
+<!--                </form>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </mat-card-content>-->
+<!--          <mat-action-row>-->
+<!--            <button class="switch-btn" type="button" (click)="switchCurrencies()">-->
+<!--              <i class="switch-btn bi bi-arrow-left-right "></i>-->
+<!--            </button>-->
+<!--            <button class="switch-btn" type="submit">-->
+<!--              <i class="switch-btn bi bi-arrow-right "></i>-->
+<!--            </button>-->
+<!--          </mat-action-row>-->
+<!--        </mat-card>-->
+
+
+<!--      </div>-->
+<!--    </mat-grid-tile>-->
+<!--    <mat-grid-list cols="2" rowHeight="2:1">-->
+<!--      <mat-grid-tile>-->
+<!--        <button-overview-example>fff</button-overview-example>-->
+<!--      </mat-grid-tile>-->
+<!--      <mat-grid-tile>-->
+<!--        <button-overview-example>fff</button-overview-example>-->
+<!--      </mat-grid-tile>-->
+<!--    </mat-grid-list>-->
+<!--  </mat-grid-list>-->
+<!--</div>-->
+
+
+<div class="mat-card">
+  <div class="content">
+    <mat-card class="fully-transparent-card">
+      <mat-card-content class="currency-display">
+        <div class="result-currency">
+          <div *ngIf="isResult;">
+            <currency-result-display
+              [resultFrom]="resultFrom"
+              [resultTo]="resultTo"
+              [resultInfo]="resultInfo">
+            </currency-result-display>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <mat-card-content class="currency-display">
+
+  <div *ngIf="isDataAvailable; else loading">
+    <form name="form-exchange" (ngSubmit)="onSubmit()">
+      <div class="form-currency" #formExchange (window:resize)="onResize()">
+        <label>Amount</label>
+        <currency-amount-display [from_symbol]="from_symbol"
+                                 (changeAmountValue)="changeAmountValue($event)">
+        </currency-amount-display>
+
+        <label>From</label>
+        <app-currency-selector #from [selectorId]="'from'"
+                               [changeCurrency]="selectFrom"></app-currency-selector>
+        <label></label>
+        <button class="switch-btn" type="button" (click)="switchCurrencies()">
+          <i class="switch-btn bi bi-arrow-left-right "></i>
+        </button>
+
+        <label>To</label>
+        <app-currency-selector #to [selectorId]="'to'"
+                               [changeCurrency]="selectTo"></app-currency-selector>
+        <label></label>
+        <button class="switch-btn" type="submit">
+          <i class="switch-btn bi bi-arrow-right "></i>
+        </button>
+      </div>
+
+    </form>
+  </div>
+  </mat-card-content>
+  <mat-card-content>
+    <app-graph [currency_data]="currency_data" [rateOneCurrency]="_from?.name"
+               [rateTwoCurrency]="to.name" [isResult]="isResult">
+    </app-graph>
+  </mat-card-content>
+</div>
+
+<ng-template #loading>
+  <div class="loading-spinner">
+    Loading Transaction. Please wait!
+  </div>
+</ng-template>
+

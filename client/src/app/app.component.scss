@@ -1,0 +1,435 @@
+@import "../styles";
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 0;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.mat-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Aligns content vertically in the center */
+  align-items: center; /* Aligns content horizontally in the center */
+  height: 100%; /* Optional: Set a specific height or make it full height of its container */
+}
+
+.button-container {
+  display: flex;
+  gap: 1px; // Use gap for spacing between buttons
+
+  button {
+    // Additional button styling here
+  }
+}
+
+section {
+  display: table;
+}
+
+.example-label {
+  display: table-cell;
+  font-size: 14px;
+  margin-left: 8px;
+  min-width: 120px;
+}
+
+.example-button-row {
+  display: table-cell;
+  max-width: 600px;
+}
+
+.example-button-row .mat-mdc-button-base {
+  margin: 8px 8px 8px 0;
+}
+
+.example-flex-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.example-button-container {
+  display: flex;
+  justify-content: center;
+  width: 120px;
+}
+
+
+
+.transparent-card, .fully-transparent-card {
+  box-shadow: none; /* Optional: removes shadow for a flatter appearance */
+}
+
+.fully-transparent-card label {
+  text-align: left; /* Aligns text to the left */
+  display: block; /* Ensures the label takes the full width available, aiding alignment */
+  margin-bottom: 5px; /* Provides some space below each label */
+}
+
+
+.card-row {
+  padding: 10px;
+  //border-bottom: 1px solid #e0e0e0; /* Adds a subtle line between rows */
+}
+
+/* Remove border from the last row for aesthetic purposes */
+.card-row:last-child {
+  border-bottom: none;
+}
+
+.currency-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.currency-info {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.currency-rate .rate, .currency-rate .value {
+  display: block; /* Ensures each element is on a new line */
+}
+
+.currency-rate .value {
+  display: block;
+  padding: 2rem 0;
+  text-align: left; /* Aligns text to the left */
+  font-size: 2.2rem; /* Increases the size of the font */
+  font-weight: bold; /* Optionally make the font bolder */
+
+}
+
+.currency-rate .rate {
+  display: block;
+  text-align: left; /* Aligns text to the left */
+  font-size: 0.8rem; /* Reduces the size of the font */
+  color: #9e9e9e; /* Sets the color to a lighter grey */
+}
+
+
+.conversion mat-form-field {
+  width: 100%;
+}
+
+
+/* Styles for the content cards */
+.card {
+  /* Styling for the material card */
+}
+
+/* Styles for transparent Material card */
+.transparent-card {
+  background-color: rgba(255, 255, 255, 0.5); /* White background with 50% transparency */
+  box-shadow: none; /* Optional: removes shadow for a flatter appearance */
+}
+
+/* Alternatively, for complete transparency */
+.fully-transparent-card {
+  background-color: transparent; /* Fully transparent background */
+  box-shadow: none;
+  align-items: flex-start;
+}
+
+
+@media (max-width: 600px) {
+  .container {
+    grid-template-columns: 1fr; /* Stacks columns into a single column on small screens */
+  }
+}
+
+
+@import "../styles";
+
+$blue: #417de0;
+$red: #ff5858;
+$bright-blue: #65C7F7;
+$brighter-blue: #9CECFB;
+$dirty-white: #EFEFEFFF;
+$brown: #3a3636;
+
+.flex-container {
+  justify-content: center;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  overflow: auto;
+  height: 100%;
+  width: 100%;
+  min-height: 570px;
+  max-width: none;
+  @include extra-small {
+    background-color: $dirty-white;
+  }
+
+  @include medium-down {
+    min-height: 710px;
+  }
+}
+
+.input-amount {
+  display: flex;
+  align-items: center;
+  //overflow: hidden;
+}
+
+
+.input-amount .prefix {
+  font-weight: 300;
+  color: #999;
+  justify-content: left;
+}
+
+.input-amount input {
+  width: 100%;
+  max-width: 200px;
+  min-width: 100px;
+  background-color: transparent;
+  box-shadow: none;
+  border: none;
+  outline: none;
+  padding: 0.5rem;
+  font-weight: 600;
+}
+
+.input-amount:focus-within {
+  background-color: white;
+  outline: 2px solid rgb(153, 153, 245);
+}
+
+
+.result-currency {
+  margin-block: 20px;
+  width: 100%;
+
+  @include extra-small {
+    width: 260px;
+  }
+  @include small-up {
+    width: 398px;
+  }
+  @include medium-up {
+    width: 100%;
+  }
+
+  .result-from {
+    font-weight: 800;
+    color: #3a3636;
+  }
+
+  .result-to {
+    font-size: 2rem;
+    font-weight: 1000;
+    margin-top: 5px;
+    margin-bottom: 15px;
+  }
+
+  .result-info {
+    white-space: pre;
+    font-weight: 500;
+  }
+}
+
+//.card {
+//  position: absolute;
+//  top: 50%;
+//  left: 50%;
+//  transform: translate(-50%, -50%);
+//  align-items: center;
+//  margin: auto;
+//  padding: 20px;
+//
+//  background-color: $dirty-white;
+//  width: 300px;
+//  height: auto;
+//  box-shadow: 0 0 10px 1px rgba(0 0 0 / 20%);
+//  border-radius: 15px;
+//
+//  h1 {
+//    font-weight: 800;
+//    margin-bottom: 20px;
+//
+//    @include large-up {
+//      margin-bottom: 60px;
+//    }
+//
+//    @include extra-small {
+//      margin-bottom: 40px;
+//    }
+//  }
+
+.switch-btn {
+  height: 50px;
+  width: 50px;
+  margin: auto;
+  text-align: center;
+  justify-items: left;
+  border-radius: 50%;
+  outline: 2px solid #d2d2d2;
+
+  &:hover {
+    outline: 2px solid rgb(153, 153, 245);
+  }
+
+
+  &:active {
+    i:before {
+      animation: flip 0.2s 1 linear;
+    }
+
+    // animation: flip 2s 1 linear;
+  }
+
+  @keyframes flip {
+    0% {
+      transform: rotateY(0deg);
+    }
+    50% {
+      transform: rotateY(180deg);
+    }
+    to {
+      transform: rotateY(0deg);
+    }
+  }
+}
+
+//
+//
+//
+//
+//  @include extra-small {
+//    width: 100%;
+//    border-radius: 0;
+//    border: none;
+//    top: auto;
+//    left: auto;
+//    transform: none;
+//
+//    background-color: transparent;
+//    box-shadow: none;
+//
+//  }
+//  @include small-up {
+//    width: 440px;
+//  }
+//
+//  @include large-up {
+//    width: 950px;
+//    padding-block: 50px;
+//  }
+//  @include extra-large {
+//    width: 1150px;
+//    padding-inline: 130px;
+//    padding-block: 100px;
+//  }
+//}
+//
+//
+.submit-btn {
+
+  text-align: left;
+  justify-content: start;
+
+  margin-top: 20px;
+  @include medium-down {
+    text-align: left;
+    justify-content: left;
+  }
+
+  button {
+    text-align: center;
+    width: 160px;
+    height: 50px;
+    border-radius: 5px;
+    color: white;
+    font-weight: 500;
+    background-color: $blue;
+
+
+    transition: 0.5s;
+
+
+    &:hover {
+      background-color: $bright-blue;
+      transition: 0.5s;
+
+      outline: 2px solid rgb(153, 153, 245);
+      border: none;
+
+      a, i {
+        &.bi {
+          color: rgb(153, 153, 245);
+        }
+      }
+    }
+  }
+
+
+}
+
+
+.form-currency {
+  //display: grid;
+  //gap: 4px 16px;
+  //grid-auto-flow: column;
+  //grid-template-columns: minmax(100px, 1fr) minmax(100px, 1fr) auto minmax(100px, 1fr);
+  //grid-template-rows: auto [input-row-start] auto;
+  //width: 100%;
+  //padding: 15px;
+
+  label {
+    text-align: center;
+  }
+
+  @include extra-small {
+    gap: 10px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    grid-auto-flow: row;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    label {
+      text-align: center;
+      margin-bottom: -8px;
+    }
+  }
+  @include small-up {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    grid-auto-flow: row;
+    grid-template-columns: auto [input-row-start] auto;
+    grid-template-rows: minmax(100px, 1fr) minmax(100px, 1fr) auto minmax(100px, 1fr);
+  }
+
+  @include medium-up {
+
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    grid-auto-flow: row;
+    grid-template-columns: auto [input-row-start] auto;
+    grid-template-rows: minmax(100px, 1fr) minmax(100px, 1fr) auto minmax(100px, 1fr);
+  }
+
+  @include large-up {
+    label {
+      text-align: left;
+    }
+    display: grid;
+    gap: 4px 50px;
+    grid-auto-flow: column;
+    grid-template-columns: minmax(100px, 1fr) minmax(100px, 1fr) auto minmax(100px, 1fr);
+    grid-template-rows: auto [input-row-left] auto;
+  }
+
+
+}

@@ -1,0 +1,36 @@
+<ng-container>
+  <mat-card class="chart-card">
+    <mat-card-header>
+      <mat-card-title>FX History</mat-card-title>
+      <mat-card-subtitle>Select a time period to display FX history.</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-button-toggle-group name="fontStyle" aria-label="Font Style" [(ngModel)]="selectedPeriod">
+        <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+          <mat-button-toggle
+            value="bold"
+            *ngFor="let period of periods; let i = index"
+            (click)="filterRateHistory(period)"
+            [checked]="i === 1"
+            [class.highlight]="i === 1">
+            {{ period.label }}
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+      </mat-button-toggle-group>
+
+      <div class="chart-container">
+        <canvas id="myChart" #chartCanvas></canvas>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</ng-container>
+
+<ng-template #noChartDataTemplate>
+  <div class="flex-center">
+    <mat-card>
+      <mat-card-content class="text-center">
+        <h6>Click</h6>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</ng-template>
